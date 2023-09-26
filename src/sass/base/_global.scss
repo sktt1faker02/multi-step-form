@@ -1,0 +1,24 @@
+body {
+  font-family: "Ubuntu", sans-serif;
+  min-height: 100vh;
+}
+
+main {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.container {
+  grid-area: 1/1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 6.2rem;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 0s 600000s, color 0s 600000s;
+}

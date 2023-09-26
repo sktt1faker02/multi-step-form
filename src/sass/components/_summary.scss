@@ -1,0 +1,90 @@
+@use "../base/variables" as var;
+
+.summary {
+  .summary-details {
+    background-color: var.$magnolia;
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .summary-detail-plan {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .title {
+      line-height: 1.2;
+    }
+
+    .title h3 {
+      font-size: 1rem;
+      color: var.$marine-blue;
+      text-transform: capitalize;
+    }
+
+    .title a {
+      color: var.$cool-gray;
+      font-weight: 500;
+      font-size: 0.8rem;
+    }
+    .price {
+      font-size: 0.9rem;
+      font-weight: var.$fw-700;
+      color: var.$marine-blue;
+    }
+  }
+
+  .summary-detail-plan.addon-line {
+    border-bottom: 1px solid var.$light-gray;
+    padding-bottom: 1rem;
+  }
+
+  .summary-addons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    .add-on {
+      display: flex;
+      justify-content: space-between;
+
+      .add-on-title {
+        font-size: 0.9rem;
+        font-weight: var.$fw-500;
+        color: var.$cool-gray;
+
+        &::first-letter {
+          text-transform: capitalize;
+        }
+      }
+
+      .add-on-price {
+        color: var.$marine-blue;
+        font-weight: var.$fw-500;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  .summary-addons.addons-list {
+    display: none;
+  }
+
+  .summary-total {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+
+    p:first-of-type {
+      font-weight: var.$fw-500;
+      color: var.$cool-gray;
+    }
+    p:last-of-type {
+      font-weight: var.$fw-700;
+      color: var.$purplish-blue;
+    }
+  }
+}

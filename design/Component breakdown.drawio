@@ -1,0 +1,19 @@
+<mxfile host="app.diagrams.net" modified="2023-09-18T02:31:27.394Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" etag="J29acFDky0rgE_8RQTX_" version="21.7.5" type="device">
+  <diagram name="Page-1" id="W5EQnf0IN3XIi9wh0dI9">
+    <mxGraphModel dx="880" dy="446" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Vh6ueHyegXnUHaHAer_e-1" value="Navigation Step Component" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="40" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="Vh6ueHyegXnUHaHAer_e-2" value="Card/MainForm Component" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="180" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="Vh6ueHyegXnUHaHAer_e-4" value="Data&lt;br&gt;Title:&lt;br&gt;Description:&lt;br&gt;Step:" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="425" y="110" width="150" height="150" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

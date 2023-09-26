@@ -1,0 +1,32 @@
+@use "../base/variables" as var;
+
+.btn-step-container {
+  margin-top: auto;
+  align-self: flex-end;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  font-size: 0.9rem;
+  // margin-bottom: -4rem;
+
+  .btn-next {
+    border: none;
+    background-color: var.$marine-blue;
+    color: var.$white;
+    padding: 0.5rem 0.9rem;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    cursor: pointer;
+    margin-left: auto;
+  }
+
+  .btn-back {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: var.$cool-gray;
+    font-weight: var.$fw-500;
+  }
+}

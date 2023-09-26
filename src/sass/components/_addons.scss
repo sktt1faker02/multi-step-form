@@ -1,0 +1,49 @@
+@use "../base/variables" as var;
+
+.addons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+
+  .addon {
+    display: flex;
+    align-items: center;
+    border: 1px solid var.$light-gray;
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    border-radius: 10px;
+    gap: 1rem;
+    transition: var.$transition;
+
+    .details h4 {
+      text-transform: capitalize;
+      color: var.$marine-blue;
+      font-size: 0.9rem;
+    }
+
+    .details p {
+      color: var.$cool-gray;
+      font-size: 0.8rem;
+    }
+
+    .price {
+      flex: 1;
+      text-align: right;
+      color: var.$purplish-blue;
+      font-size: 0.8rem;
+    }
+
+    input[type="checkbox"] {
+      width: 1.2rem;
+      height: 1.2rem;
+      accent-color: var.$purplish-blue;
+      pointer-events: none;
+    }
+  }
+
+  .addon.selected {
+    border: 1px solid var.$purplish-blue;
+    background-color: var.$magnolia;
+  }
+}

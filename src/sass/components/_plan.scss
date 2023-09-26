@@ -1,0 +1,105 @@
+@use "../base/variables" as var;
+
+.plans {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+
+  .plan {
+    display: flex;
+    align-items: center;
+    border: 1px solid var.$light-gray;
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    border-radius: 10px;
+    gap: 0.7rem;
+    transition: var.$transition;
+
+    .details h4 {
+      text-transform: capitalize;
+      color: var.$marine-blue;
+      font-size: 0.9rem;
+    }
+
+    .details p {
+      color: var.$cool-gray;
+      font-size: 0.8rem;
+    }
+
+    .details .freebie {
+      color: var.$marine-blue;
+      font-size: 0.7rem;
+      font-weight: var.$fw-500;
+    }
+
+    input[type="radio"] {
+      display: none;
+    }
+  }
+
+  .plan.selected {
+    border: 1px solid var.$purplish-blue;
+    background-color: var.$magnolia;
+  }
+
+  .plan-icon-yearly {
+    align-self: flex-start;
+  }
+}
+
+.billing {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  background-color: var.$magnolia;
+  padding: 0.85rem;
+  border-radius: 10px;
+  align-items: center;
+
+  label {
+    color: var.$cool-gray;
+    font-weight: 700;
+  }
+
+  label.active {
+    color: var.$marine-blue;
+  }
+
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  div > label {
+    position: relative;
+    cursor: pointer;
+    display: block;
+    width: 40px;
+    height: 20px;
+    background: var.$marine-blue;
+    border-radius: 50px;
+    transition: 300ms linear;
+  }
+
+  div > label:before {
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    transform: translateY(-50%);
+    content: "";
+    display: block;
+    width: 13px;
+    height: 13px;
+    background: #ffffff;
+    border-radius: 50%;
+    transition: left 300ms linear;
+  }
+
+  div > input:checked + label {
+    background: var.$marine-blue;
+  }
+
+  div > input:checked + label:before {
+    left: 24px;
+  }
+}
