@@ -9,6 +9,7 @@
   padding: 1rem;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   font-size: 0.9rem;
+  background-color: var.$white;
   // margin-bottom: -4rem;
 
   .btn-next {
@@ -20,6 +21,15 @@
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
     cursor: pointer;
     margin-left: auto;
+    transition: var.$transition;
+
+    &:hover {
+      filter: brightness(1.5);
+    }
+  }
+
+  .btn-next.confirm {
+    background-color: var.$purplish-blue;
   }
 
   .btn-back {
@@ -28,5 +38,10 @@
     cursor: pointer;
     color: var.$cool-gray;
     font-weight: var.$fw-500;
+    transition: var.$transition;
+
+    &:hover {
+      color: var.$marine-blue;
+    }
   }
 }

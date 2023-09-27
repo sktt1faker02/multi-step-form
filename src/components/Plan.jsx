@@ -1,12 +1,12 @@
 import NextPrevious from "./NextPrevious";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const Plan = ({ steps, handleStepNext, getSummaryData, currentStep, handleGoBack }) => {
-  const [selectedPlan, setSelectedPlan] = useState(steps[1].plan[0].type);
+const Plan = ({ steps, handleStepNext, getSummaryData, currentStep, handleGoBack, summaryDetails }) => {
+  const [selectedPlan, setSelectedPlan] = useState("");
   const [billingType, setBillingType] = useState("monthly");
 
-  console.log(selectedPlan);
+  // console.log(selectedPlan);
 
   const handlePlanClick = (planType) => {
     setSelectedPlan(planType);
@@ -17,8 +17,29 @@ const Plan = ({ steps, handleStepNext, getSummaryData, currentStep, handleGoBack
     setBillingType(billingType === "monthly" ? "yearly" : "monthly");
   };
 
+  useEffect(() => {
+    // Set selectedPlan based on summaryDetails when it changes
+    if (summaryDetails[0].plan) {
+      setSelectedPlan(summaryDetails[0].plan);
+    } else {
+      setSelectedPlan(steps[1].plan[0].type); // Default to the first plan if no plan is selected
+    }
+    if (summaryDetails[0].bill) {
+      setBillingType(summaryDetails[0].bill);
+    } else {
+      setBillingType("monthly"); // Default to monthly if no billing type is specified
+    }
+  }, [summaryDetails, steps]); // Trigger the effect when summaryDetails changes
+
   const handleSubmit = () => {
     handleStepNext();
+    const planPriceFilter = steps[1].plan.filter((plan) => plan.type === selectedPlan);
+    const billType = billingType === "yearly" ? "year" : "month";
+    const planPrice = planPriceFilter[0][`${billType}`];
+    getSummaryData({ plan: selectedPlan, bill: billingType, planPrice: planPrice });
+  };
+
+  const onBack = () => {
     const planPriceFilter = steps[1].plan.filter((plan) => plan.type === selectedPlan);
     const billType = billingType === "yearly" ? "year" : "month";
     const planPrice = planPriceFilter[0][`${billType}`];
@@ -62,7 +83,7 @@ const Plan = ({ steps, handleStepNext, getSummaryData, currentStep, handleGoBack
           </div>
         </form>
       </div>
-      <NextPrevious onSubmit={handleSubmit} currentStep={currentStep} handleGoBack={handleGoBack} />
+      <NextPrevious onSubmit={handleSubmit} currentStep={currentStep} handleGoBack={handleGoBack} onBack={onBack} />
     </div>
   );
 };

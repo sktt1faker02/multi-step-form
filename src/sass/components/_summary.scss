@@ -30,6 +30,11 @@
       color: var.$cool-gray;
       font-weight: 500;
       font-size: 0.8rem;
+      transition: var.$transition;
+
+      &:hover {
+        color: var.$purplish-blue;
+      }
     }
     .price {
       font-size: 0.9rem;

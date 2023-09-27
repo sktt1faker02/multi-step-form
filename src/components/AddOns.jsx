@@ -1,7 +1,7 @@
 import NextPrevious from "./NextPrevious";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const AddOns = ({ steps, billingType, handleStepNext, getSummaryData, currentStep, handleGoBack }) => {
+const AddOns = ({ steps, billingType, handleStepNext, getSummaryData, currentStep, handleGoBack, summaryDetails }) => {
   const [addonCheck, setAddonCheck] = useState(steps[2].addOns.map(() => false));
   const [selectedAddOns, setSelectedAddOns] = useState([]);
 
@@ -15,10 +15,25 @@ const AddOns = ({ steps, billingType, handleStepNext, getSummaryData, currentSte
     setSelectedAddOns([...checkedCheckboxes]);
   };
 
+  useEffect(() => {
+    if (summaryDetails[0].addons && summaryDetails[0].addons.length > 0) {
+      // Initialize addonCheck and selectedAddOns based on summaryDetails[0].addons
+      const updatedAddonCheck = steps[2].addOns.map((addon) => summaryDetails[0].addons.some((selectedAddon) => selectedAddon.type === addon.type));
+      setAddonCheck(updatedAddonCheck);
+
+      const updatedSelectedAddOns = summaryDetails[0].addons.filter((selectedAddon) => updatedAddonCheck.some((isChecked, idx) => isChecked && selectedAddon.type === steps[2].addOns[idx].type));
+      setSelectedAddOns(updatedSelectedAddOns);
+    }
+  }, [summaryDetails, steps]);
+
   const handleSubmit = () => {
     // console.log(selectedAddOns);
     getSummaryData({ addons: [...selectedAddOns] });
     handleStepNext();
+  };
+
+  const onBack = () => {
+    getSummaryData({ addons: [...selectedAddOns] });
   };
 
   return (
@@ -44,7 +59,7 @@ const AddOns = ({ steps, billingType, handleStepNext, getSummaryData, currentSte
           </div>
         </form>
       </div>
-      <NextPrevious onSubmit={handleSubmit} currentStep={currentStep} handleGoBack={handleGoBack} />
+      <NextPrevious onSubmit={handleSubmit} currentStep={currentStep} handleGoBack={handleGoBack} onBack={onBack} />
     </div>
   );
 };

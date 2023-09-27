@@ -1,6 +1,6 @@
 import NextPrevious from "./NextPrevious";
 
-const Summary = ({ summaryDetails, currentStep, handleGoBack }) => {
+const Summary = ({ summaryDetails, currentStep, handleGoBack, handleChangePlan, handleStepNext }) => {
   const billType = summaryDetails[0].bill === "yearly" ? "yr" : "mo";
 
   let totalAmount = summaryDetails[0].planPrice;
@@ -11,7 +11,15 @@ const Summary = ({ summaryDetails, currentStep, handleGoBack }) => {
     });
   }
 
-  console.log(summaryDetails);
+  const changeMind = () => {
+    handleChangePlan();
+  };
+
+  const onSubmit = () => {
+    handleStepNext();
+  };
+
+  // console.log(summaryDetails);
   return (
     <div className="container">
       <section className="summary form-container">
@@ -21,7 +29,9 @@ const Summary = ({ summaryDetails, currentStep, handleGoBack }) => {
           <div className={`summary-detail-plan ${summaryDetails[0].addons.length > 0 ? "addon-line" : ""}`}>
             <div className="title">
               <h3>{`${summaryDetails[0].plan} (${summaryDetails[0].bill})`}</h3>
-              <a href="#">Change</a>
+              <a href="#" onClick={changeMind}>
+                Change
+              </a>
             </div>
             <p className="price">{`$${summaryDetails[0].planPrice}/${billType}`}</p>
           </div>
@@ -42,7 +52,7 @@ const Summary = ({ summaryDetails, currentStep, handleGoBack }) => {
           <p className="total-price">{`$${totalAmount}/${billType}`}</p>
         </div>
       </section>
-      <NextPrevious currentStep={currentStep} handleGoBack={handleGoBack} />
+      <NextPrevious currentStep={currentStep} handleGoBack={handleGoBack} onSubmit={onSubmit} />
     </div>
   );
 };
